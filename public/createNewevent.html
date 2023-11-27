@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Event</title>
+    <!-- <link rel="stylesheet" href="./indexStyle.css"> -->
+    <link rel="stylesheet" href="./global.css">
+</head>
+
+<body>
+    <!-- Event Creation Form -->
+    <nav class="navBar">
+        <div class="usrname heading">
+            <a>Create Event</a>
+        </div>
+        <div class="profile-btn"><a href="/profile"><button  >Profile</button></a></div>
+    </nav>
+    <div id="event-creation">
+        <div class="bar"></div>
+        <div class="form">
+            <div class="form-field">
+                <form action="/createEvent" method="post" id="event-form" onsubmit="return formChecker()">
+                    <label for="event-name">Event Name:</label>
+                    <input type="text" id="event-name" name="eventName" required>
+        
+                    <label for="event-date">Event Date:</label>
+                    <input type="date" id="event-date"  name="eventDate" required>
+        
+                    <label for="event-time">Event Time:</label>
+                    <input type="time" id="event-time" name="eventTime" required>
+        
+                    <label for="event-location">Event Location:</label>
+                    <input type="text" id="event-location" name="eventLocation" required>
+        
+                    <label for="event-description">Event Description:</label>
+                    <textarea id="event-description" name="eventDescription" rows="4"></textarea>
+        
+                    <button type="submit">Create Event</button>
+                </form>
+                <div class="backButton"><a href="../index.html"><button>back</button></a></div>
+    
+            </div>
+        </div>
+    </div>
+    <script>
+        function formChecker(){
+            const date=document.getElementById('event-date').value;
+            const time=document.getElementById('event-time').value;
+            const inputDateTime = new Date(`${date}T${time}`);
+            const currentDateTime = new Date();
+            if(inputDateTime<currentDateTime){
+                alert("Enter correct Date or Time");
+                return false;
+            }
+        }
+    </script>
+</body>
+
+</html>

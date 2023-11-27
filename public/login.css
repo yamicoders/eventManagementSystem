@@ -1,0 +1,60 @@
+#loginRegister-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.atag{
+    color:rgb(255, 255, 255);
+    text-align: center;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#register{
+    display: none;
+}
+
+.form-field{
+    height: 550px;
+}
+form{
+    padding-top: 10px;
+    padding: 5px;
+}
+.card-up{
+    height: 440px;   
+}
+.heading{
+    height: 70px;
+    margin-bottom: 0;
+    background: transparent;
+}
+.form-field input{
+    outline: 0;
+    border: 0;
+    background-color: transparent;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.heading a{
+    background: linear-gradient( 
+        to right, #f32170, #ff6b08, 
+         #cf23cf, #eedd44); 
+    -webkit-text-fill-color: transparent; 
+    -webkit-background-clip: text; 
+    text-align: center;
+}
+
+.backReg{
+    height: 40px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+@media  screen and (max-width:700px) {
+    #login button,#register button{
+        font-size: 15px;
+    }
+}

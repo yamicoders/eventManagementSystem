@@ -1,0 +1,131 @@
+body {
+    font-family: 'Arial', sans-serif;
+    padding: 0;
+    margin: 0;
+    background-image: url(./images/bg2.jpg);
+    background-position: center;
+    /* background-repeat: repeat; */
+    /* background-size: cover; */
+    /* background: linear-gradient( 70deg, #65082cd5, #e16f23,  #e3d664b6);  */
+    height: 100vh;
+    backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+h1,
+h2,
+h3 {
+    color: #333;
+    text-transform: capitalize;
+}
+
+
+
+
+
+input,
+textarea {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0 15px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+#search-event{
+    width: 300px;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
+nav{
+    background-color: rgba(172, 172, 172, 0.188);
+     backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 10px 5px;
+}
+.bar{
+    height: 2px;
+    width: 100%;
+    background-color: wheat;
+}
+.nav-right{
+    display: flex;
+}
+
+.profile{
+    display: none;
+}
+.profile img{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+.profile img:hover{
+    filter: brightness(80%);
+    cursor: pointer;
+}
+
+@media screen and (max-width:600px) {
+    /* body{
+    overflow-x: hidden;
+
+    } */
+    body {
+        background-attachment: scroll;
+      }
+    #search-event{
+        width: 70%;
+        margin-left: 5px;
+    }
+    #event-list{
+        grid-template-columns: repeat(1,1fr);
+        margin:10px 27px 10px 5px;
+    }
+    .event-item{
+        width: 100%;
+        margin: 0;
+        margin-bottom: 10px;
+    }
+    .nav-right{
+        flex-direction: column;
+        row-gap: 5px;
+    }
+}
+
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.popup-content {
+    background: #e6e3e3;
+    max-width: 600px;
+    margin: 10% auto;
+    padding: 20px;
+    position: relative;
+    border-radius: 6px;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 40px;
+    cursor: pointer;
+}
+.popup label{
+    color: black;
+}
+.popup input{
+    background-color: white;
+}

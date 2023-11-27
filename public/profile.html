@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="./global.css">
+</head>
+
+<body class="profile">
+    <nav class="navBar">
+        <div class="usrname"><a id="uname" href="/logout">
+                Profile
+            </a></div>
+        <div class="big-btn">
+            <div><a href="/"><button>Home</button></a></div>
+            <div><a href="/createNewEvent"><button class="newEvent-btn">Create New Event</button></a></div>
+            <div><a href="/logout"><button>logout</button></a></div>
+        </div>
+        <div class="small-btn">
+            hello world
+        </div>
+    </nav>
+    <div class="bar"></div>
+
+    <div class="event-card">
+        <div id="event-list"></div>
+    </div>
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup()">&times;</span>
+            <h2>Registered</h2>
+            <table id="registered-user">
+                
+            </table>
+        </div>
+    </div>
+
+
+    <script>
+        function getCookie(name) {
+            return document.cookie
+                .split('; ')
+                .find(cookie => cookie.startsWith(name + '='))
+                ?.split('=')[1];
+        }
+
+        const userId = getCookie('UserId');
+        const uname = document.getElementById('uname').innerHTML = userId;
+
+
+
+        window.onload = async function () {
+            try {
+                const response = await fetch('https://event-management-system-b3x6.onrender.com/api/ownEvent');
+                const events = await response.json();
+                displayEvents(events);
+            } catch (error) {
+                console.error('Error fetching events:', error);
+            }
+            function displayEvents(eventsArray) {
+                const eventListElement = document.getElementById('event-list');
+
+                if (!eventListElement) {
+                    console.error('Error: eventListElement is not defined');
+                    return;
+                }
+
+                eventListElement.innerHTML = '';
+
+                eventsArray.forEach(event => {
+                    const eventItem = document.createElement('div');
+                    eventItem.classList.add('event-item');
+                    eventItem.innerHTML = `
+                        <h1 id='eventidH' value=${event._id}>${event.name}</h1>
+                        <p>Date: ${event.date}</p>
+                        <p>Time: ${event.time}</p>
+                        <p>Location: ${event.location}</p>
+                        <p>Description: ${event.description}</p>
+                        <button id="rsvp-btn" href="${event.link}" onclick="openPopup('${event._id}', event)">View</button>
+        `;
+
+                    eventListElement.appendChild(eventItem);
+                });
+
+
+            }
+        };
+
+
+        function openPopup(eventId) {
+            viewRequest(eventId);
+            document.getElementById('popup').style.display = 'block';
+        }
+
+
+        async function viewRequest(eventId) {
+            const eventid = {
+                eventId: eventId,
+            };
+            console.log(eventId);
+            try {
+                const response = await fetch('/viewRequest', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(eventid),
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        displayRequest(data);
+                    })
+            } catch (error) {
+                console.error('Error creating event:', error);
+            }
+        }
+
+        function displayRequest(requestArray) {
+            const eventListElement = document.getElementById('registered-user');
+
+            if (!eventListElement) {
+                console.error('Error: eventListElement is not defined');
+                return;
+            }
+
+            eventListElement.innerHTML = '';
+            const requestHeader = document.createElement('tr');
+            requestHeader.classList.add('header');
+            requestHeader.innerHTML = `
+                    <th>Name</th>
+                    <th>Mobile</th>`;
+                    eventListElement.appendChild(requestHeader);
+               
+            requestArray.forEach(event => {
+                const eventItem = document.createElement('tr');
+                
+                eventItem.innerHTML = `
+                    <td class="td-name">${event.name}</td>
+                    <td>${event.mobile}</td>
+        `;
+
+                eventListElement.appendChild(eventItem);
+            });
+
+
+        };
+
+
+
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>

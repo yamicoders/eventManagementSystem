@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login/Register</title>
+    <link rel="stylesheet" href="./global.css">
+    <link rel="stylesheet" href="./indexStyle.css">
+    <link rel="stylesheet" href="./login.css">
+</head>
+
+<body>
+    <div id="loginRegiter-form">
+        <div id="login">
+            <div class="form">
+                <div class="form-field form-content">
+                    <div class="heading"> <a>Login</a>
+                    </div>
+                    <div class="card-up">
+                    <form action="/login" method="post">
+
+                        <label for="uname">Username:</label>
+                        <input type="text" id="uname" name="username"  required>
+                        <div class="bar"></div>
+                        <label for="pass">Password:</label>
+                        <input type="password" id="pass" name="password" required>
+                        <div class="bar"></div>
+                        <button type="submit">Log In</button>
+                    </form>
+                    <div class="atag"><a>Forgot password?</a></div>
+                    <div class="atag"><a onclick="register()">Don't have account Register</a></div>
+                   </div>
+                    <div class="backButton backReg"><a href="../index.html"><button>back</button></a></div>
+
+                </div>
+            </div>
+        </div>
+        <div id="register">
+            <div class="form">
+                <div class="form-field">
+                    <div class="heading"> <a>Register</a></div>
+                    <div class="card-up">
+                        <form action="/register" method="post" onsubmit="return validateForm()">
+                            <label for="username">Username:</label>
+                            <input type="text" name="username" id="username" required>
+                            <div class="bar"></div>
+                            <label for="mobile">Mobile:</label>
+                            <input type="text" name="mobile" id="mobile" max="10" oninput="checkMobile()" required>
+                            <div class="bar"></div>
+                            <label for="email">Email:</label>
+                            <input type="email" name="email" id="email">
+                            <div class="bar"></div>
+                            <label for="password">Password:</label>
+                            <input type="password" min="8" name="password" id="password" autocomplete="off" required>
+                            <div class="bar"></div>
+                            <button type="submit">Register</button>
+                        </form>
+                        <div class="atag"><a onclick="login()">Created Account Login</a></div>
+                    </div>
+                    <div class="backButton backReg"><a href="../index.html"><button>back</button></a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        function login() {
+            document.getElementById('login').style.display = 'contents';
+            document.getElementById('register').style.display = 'none';
+        }
+        function register() {
+            document.getElementById('login').style.display = 'none';
+            document.getElementById('register').style.display = 'contents';
+        }
+        function checkMobile() {
+            const mobile = document.getElementById('mobile').value;
+            console.log(mobile);
+            if (mobile.length < 10) {
+                return false;
+            }
+            if (mobile[0] <= 5 || mobile.length>10) {
+                alert("please enter correct number");
+                return false;
+            }
+            return true;
+        }
+        function validateForm() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            return checkMobile();
+            if (username === '') {
+                console.log("please enter the username");
+                return false
+            }
+            if (password === '') {
+                alert("please enter the passwrod");
+                return false;
+            }
+            return true;
+        }
+
+    </script>
+
+
+</body>
+
+</html>
