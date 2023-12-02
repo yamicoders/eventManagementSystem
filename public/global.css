@@ -13,11 +13,15 @@ body{
     padding-top: 10px;
     padding-bottom: 10px;
 }
-/* .profile img{
-    height: 200px;
-    width: 200px;
-    border: 2px solid rgb(50, 50, 37);
-} */
+.eventnavBar{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
 .profile a{
     text-align: center;
     text-transform: capitalize;
