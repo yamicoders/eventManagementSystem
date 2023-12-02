@@ -44,7 +44,15 @@ app.get('/api/events', async (req, res) => {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
-
+app.get('/api/events/:eventId', async (req, res) => {
+    const eventId = req.params.eventId;
+    try {
+        const events = await Event.find({_id:eventId});
+        res.json(events);
+    } catch (error) {
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
 
 
 
@@ -248,15 +256,7 @@ app.post('/viewRequest', async (req, res) => {
 
 
 });
-app.get('/api/events/:eventId', async (req, res) => {
-    const eventId = req.params.eventId;
-    try {
-        const events = await Event.find({_id:eventId});
-        res.json(events);
-    } catch (error) {
-        res.status(500).json({ error: 'Internal Server Error' });
-    }
-});
+
 app.delete("/api/events/:eventId", async (req, res) => {
     const eventId = req.params.eventId;
 
