@@ -39,6 +39,10 @@ h2{
     border-image-slice: 1;
     border-image-source: linear-gradient(to left,#00C853,#B2FF59);
 } */
+button:hover {
+    background-color: #45a049;
+    box-shadow: 0 10px 100px 0 #45a049,0 5px 5px 0 #45a049;
+}
 
 
     /* smaller device dropdown */
