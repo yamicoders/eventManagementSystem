@@ -34,11 +34,11 @@ h2{
     font-weight: 700;
     margin-right: 10px;
 }
-.navBtn1 button:hover{
+/* .navBtn1 button:hover{
     border-bottom: 4px solid;
     border-image-slice: 1;
     border-image-source: linear-gradient(to left,#00C853,#B2FF59);
-}
+} */
 
 
     /* smaller device dropdown */
