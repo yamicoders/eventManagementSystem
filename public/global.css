@@ -242,3 +242,7 @@ table .td-name{
     border-right: 1px solid black;
 
 }
+.eventnavBar{
+    display: flex;
+    background: transparent;
+}
