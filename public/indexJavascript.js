@@ -4,7 +4,12 @@ document.getElementById('rsvp-btn').addEventListener('click', function () {
 });
 
 
-
+function menubtn() {
+        dropdownContent.classList.toggle("show");
+}
+function bar(x){
+        x.classList.toggle("cross");
+}
 
 // <!-- Edit and Delete Buttons -->
 // function displayEvents() {
