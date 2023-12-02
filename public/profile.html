@@ -127,7 +127,6 @@ function deleteEvent(eventId) {
             const eventid = {
                 eventId: eventId,
             };
-            console.log(eventId);
             try {
                 const response = await fetch('/viewRequest', {
                     method: 'POST',
