@@ -12,6 +12,8 @@ body{
     height: 10px;
     padding-top: 10px;
     padding-bottom: 10px;
+        padding-left: 10px;
+
 }
 .eventTitle{
     width: 100%;
@@ -93,6 +95,10 @@ form label{
     padding-top: 70px;
 }
 
+.card-btn{
+    display: flex;
+    justify-content: space-between;
+}
 
 
 @media screen and (max-width:700px) {
@@ -107,6 +113,14 @@ form label{
     form label{
         color: rgb(211, 211, 211);
 
+    }
+    .card-btn{
+        display: flex;
+        flex-direction: column;
+    }
+    .card-btn button{
+        margin-top: 10px;
+        width: 100px;
     }
 }
 
@@ -181,7 +195,7 @@ textarea {
     padding-top: 0;
 }
 
-@media screen and (max-width:600px) {
+@media screen and (max-width:700px) {
     .small-btn{
         display: contents;
     }
@@ -197,10 +211,6 @@ textarea {
         margin: 0;
         margin-bottom: 10px;
     }
-/*     .nav-right{
-        flex-direction: column;
-        row-gap: 5px;
-    } */
 }
 
 .popup {
