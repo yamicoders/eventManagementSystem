@@ -13,7 +13,7 @@ body{
     padding-top: 10px;
     padding-bottom: 10px;
 }
-.eventnavBar{
+.eventTitle{
     width: 100%;
     height: 50px;
     display: flex;
@@ -22,7 +22,11 @@ body{
     padding-top: 10px;
     padding-bottom: 10px;
 }
-
+.eventnavBar{
+     display: flex;
+    background: transparent;
+    
+}
 .profile a{
     text-align: center;
     text-transform: capitalize;
