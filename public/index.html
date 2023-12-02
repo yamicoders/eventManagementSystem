@@ -96,8 +96,6 @@
             const inputDateTime = new Date(`${date}`);
             const currentDateTime = new Date();
             if(inputDateTime>=currentDateTime){
-                console.log(inputDateTime);
-                console.log(currentDateTime);
                 const eventItem = document.createElement('div');
                 eventItem.classList.add('event-item');
                 eventItem.innerHTML = `
