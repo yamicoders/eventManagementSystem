@@ -11,17 +11,6 @@
 
 <body>
 
-<!--      <nav>
-        <input type="text" id="search-event" placeholder="Search...." oninput="searchEvents()"
-            onfocus="clearPlaceholder()" onblur="restorePlaceholder()">
-          <div class="nav-right">
-            <a href="/createNewevent"><button>Create New Event</button></a>
-            <div class="login-register"><a href="/profile"><button>Profile</button></a></div>
-            <div class="profile">
-                <img src="./images/profile.png" alt="profile">
-            </div>
-          </div>
-    </nav><div class="bar"></div> -->
     <nav class="navBar">
         <div>
             <input type="text" id="search-event" placeholder="Search...." oninput="searchEvents()"
@@ -30,7 +19,7 @@
           <div class="navBtn1">
             <div class="nav-right big">
                 <a href="/createNewevent"><button>Create New Event</button></a>
-                <div class="login-register"><a href="/profile"><button>Profile</button></a></div>
+                <div class="login-register"><button><a href="/profile">Profile</a></button></div>
                 <div class="profile">
                     <img src="./images/profile.png" alt="profile">
                 </div>
@@ -45,8 +34,9 @@
                 </div>
             </div>
         <div class="dropdown-content" id="dropdownContent">
-            <button class="navBtn"><a href="/createNewevent">Create Event</a></button>
-            <button class="navBtn"><a href="/profile">Profile</a></button>
+            <span><a href="/"><button>Home</button></a></span>
+           <span><a href="/createNewEvent"><button class="newEvent-btn">Create New Event</button></a></span>
+           <span><a href="/logout"><button>logout</button></a></span>
           </div>
           </div>
           </div>
