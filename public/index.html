@@ -6,11 +6,12 @@
     <title>Event Management System</title>
     <link rel="stylesheet" href="./global.css">
     <link rel="stylesheet" href="./indexStyle.css">
+    <link rel="stylesheet" href="./navbar.css">
 </head>
 
 <body>
 
-     <nav>
+<!--      <nav>
         <input type="text" id="search-event" placeholder="Search...." oninput="searchEvents()"
             onfocus="clearPlaceholder()" onblur="restorePlaceholder()">
           <div class="nav-right">
@@ -20,7 +21,37 @@
                 <img src="./images/profile.png" alt="profile">
             </div>
           </div>
-    </nav><div class="bar"></div>
+    </nav><div class="bar"></div> -->
+    <nav>
+        <div>
+            <input type="text" id="search-event" placeholder="Search...." oninput="searchEvents()"
+            onfocus="clearPlaceholder()" onblur="restorePlaceholder()">
+        </div>
+          <div class="navBtn1">
+            <div class="nav-right big">
+                <a href="/createNewevent"><button>Create New Event</button></a>
+                <div class="login-register"><a href="/profile"><button>Profile</button></a></div>
+                <div class="profile">
+                    <img src="./images/profile.png" alt="profile">
+                </div>
+              </div>
+        
+        <div class="small">
+            <div class="menuBtn"  onclick="menubtn()">
+                <div class="bars" onclick="bar(this)">
+                    <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+                </div>
+            </div>
+        <div class="dropdown-content" id="dropdownContent">
+            <button class="navBtn"><a href="/createNewevent">Create Event</a></button>
+            <button class="navBtn"><a href="/profile">Profile</a></button>
+          </div>
+          </div>
+          </div>
+
+    </nav>
 
 
 
