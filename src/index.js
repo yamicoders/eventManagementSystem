@@ -247,16 +247,39 @@ app.post('/viewRequest', async (req, res) => {
     }
 
 
+});
+app.get('/api/events/:eventId', async (req, res) => {
+    const eventId = req.params.eventId;
+    try {
+        const events = await Event.find({_id:eventId});
+        res.json(events);
+    } catch (error) {
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+app.delete("/api/events/:eventId", async (req, res) => {
+    const eventId = req.params.eventId;
 
+    let userId;
+    const token = req.headers.authorization || req.cookies.sessionId;
+    const decode = jwt.verify(token, secret_key, (err, decoded) => {
+        userId = decoded.userId;
+    });
+    const event = await Event.findOne({ _id:eventId });
+    if (event.userId === userId) {
 
-
-
-    // try {
-    // const eventTicket = await eventTickets.find({eventId});
-    // res.json(eventTicket);
-    // } catch (error) {
-    //     res.status(500).json({ error: 'Internal Server Error' });
-    // }
+       try {
+           const result = await Event.deleteOne({_id:eventId });
+           if (result.deletedCount === 1) {
+               res.status(200).redirect('/profile');
+           } else {
+               res.status(404).json({ message: "Event not found!" });
+           }
+       } catch (error) {
+           console.error(error);
+           res.status(500).json({ message: "Internal server error!" });
+       }
+    }
 });
 
 app.listen(PORT, () => {
