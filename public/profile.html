@@ -94,7 +94,9 @@
                         <p>Time: ${event.time}</p>
                         <p>Location: ${event.location}</p>
                         <p>Description: ${event.description}</p>
-                        <button id="rsvp-btn" href="${event.link}" onclick="openPopup('${event._id}', event)">View</button>
+                        <div class="card-btn">
+                        <button id="rsvp-btn" onclick="openPopup('${event._id}', event)">View</button>
+                        <button id="delete" onclick="deleteEvent('${event._id}', event)">delete</button></div>
         `;
 
                     eventListElement.appendChild(eventItem);
@@ -109,7 +111,17 @@
             viewRequest(eventId);
             document.getElementById('popup').style.display = 'block';
         }
-
+function deleteEvent(eventId) {
+            fetch(`/api/events/${eventId}`, {
+                method: "DELETE",
+            }).then(() => {
+                alert("Event deleted successfully!");
+                window.location.reload()
+            })
+                .catch((error) => {
+                    alert("An error occurred while deleting the event. Please try again later.");
+                });
+        }
 
         async function viewRequest(eventId) {
             const eventid = {
