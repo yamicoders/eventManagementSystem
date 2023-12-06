@@ -258,23 +258,30 @@ app.post('/viewRequest', async (req, res) => {
 });
 
 app.delete("/api/events/:eventId", async (req, res) => {
-    const eventId = req.params.eventId;
+    const eventid = req.params.eventId;
 
     let userId;
     const token = req.headers.authorization || req.cookies.sessionId;
     const decode = jwt.verify(token, secret_key, (err, decoded) => {
         userId = decoded.userId;
     });
-    const event = await Event.findOne({ _id:eventId });
+    const event = await Event.findOne({ _id:eventid });
     if (event.userId === userId) {
-
-       try {
-           const result = await Event.deleteOne({_id:eventId });
-           if (result.deletedCount === 1) {
-               res.status(200).redirect('/profile');
-           } else {
-               res.status(404).json({ message: "Event not found!" });
-           }
+        
+           try {
+               const result = await Event.deleteOne({_id:eventid });
+            //    const ticket= eventTickets.find({eventId});
+            console.log(eventid);
+            eventTickets.deleteMany({eventId:eventid}).then(function(){
+                if (result.deletedCount === 1) {
+                    res.status(200).redirect('/profile');
+                } 
+                else {
+                    res.status(404).json({ message: "Event not found!" });
+                }
+                console.log("Data deleted");
+            }).catch(function(error){
+                console.log("Failed to delete");}); 
        } catch (error) {
            console.error(error);
            res.status(500).json({ message: "Internal server error!" });
