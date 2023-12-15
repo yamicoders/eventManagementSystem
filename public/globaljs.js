@@ -9,7 +9,7 @@ function register() {
 
 function openPopup(eventId) {
     document.getElementById('eventid').value = eventId;
-    document.getElementById('popup').style.display = 'flex';
+    document.getElementById('popup').style.display = 'block';
 }
 
 function closePopup() {
